@@ -1,0 +1,18 @@
+[Unit]
+Description=Web Server Instance 3
+After=network.target
+
+[Service]
+Type=simple
+User=andrei
+WorkingDirectory=/home/andrei/webserver-lab/app
+Environment="PORT=8003"
+Environment="SERVER_ID=server-3"
+ExecStart=/usr/bin/python3 /home/andrei/webserver-lab/app/app.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/andrei/webserver-lab/logs/server-3.log
+StandardError=append:/home/andrei/webserver-lab/logs/server-3-error.log
+
+[Install]
+WantedBy=multi-user.target
